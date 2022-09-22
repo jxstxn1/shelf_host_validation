@@ -1,7 +1,6 @@
 # Shelf Host Validation
 
-Middleware that protects Shelf and DartFrog servers from [DNS Rebinding](https://en.wikipedia.org/wiki/DNS_rebinding) attacks by validating Host and Referer [sic] headers from incoming requests. If a request doesn't contain a whitelisted Host/Referer header, `shelf_host_validation` will respond with a 403 Forbidden HTTP error.
-Inspired by <https://github.com/brannondorsey/host-validation>
+Middleware that protects Shelf and DartFrog servers from [DNS Rebinding](https://en.wikipedia.org/wiki/DNS_rebinding) attacks by validating Host and Referer [sic] headers from incoming requests. If a request doesn't contain a whitelisted Host/Referer header, `shelf_host_validation` will respond with a 403 Forbidden HTTP error. Inspired by <https://github.com/brannondorsey/host-validation>
 
 ## Installing
 
