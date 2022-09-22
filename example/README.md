@@ -32,7 +32,7 @@ Handler maxContentLengthValidator(Handler handler) {
 ### Full example
 
 ```dart
-import 'package:content_length_validator/content_length_validator.dart';
+import 'package:shelf_host_validation/shelf_host_validation.dart';
 import 'package:shelf/shelf.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
 
