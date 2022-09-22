@@ -310,7 +310,8 @@ void main() {
 
   group('LAN Referer Regex : ', () {
     final lanHostRegex = RegExp(
-        r'^http:\/\/192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\/.*){0,1}$');
+      r'^http:\/\/192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\/.*){0,1}$',
+    );
     final handler = validateHost(
       hosts: [lanHostRegex],
     )(syncHandler);
@@ -495,8 +496,10 @@ void main() {
         .addMiddleware(
           validateHost(
             hosts: ['office-teapot'],
-            errorResponse: Response(418,
-                body: "I'm the office teapot. Refer to me only as such."),
+            errorResponse: Response(
+              418,
+              body: "I'm the office teapot. Refer to me only as such.",
+            ),
           ),
         )
         .addHandler(syncHandler);
