@@ -1,5 +1,5 @@
 name: shelf_host_validation
-description: Enforces that users can only make API requests over HTTPS (SSL).
+description: Validates the 'Host' and 'Referer' Header so that DNS Rebinding Attacks wont work.
 version: 1.0.0
 homepage: https://jxstxn.de
 repository: https://github.com/jxstxn1/shelf_host_validation
