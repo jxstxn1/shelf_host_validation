@@ -49,7 +49,9 @@ void testHeader({
   required Map<String, Object> headers,
   bool shouldBeAllowed = true,
 }) {
-  return test('$headers ${shouldBeAllowed ? 'should be allowed' : 'should not be allowed'}', () async {
+  return test(
+      '$headers ${shouldBeAllowed ? 'should be allowed' : 'should not be allowed'}',
+      () async {
     final response = await makeRequest(
       handler,
       uri: clientUri,

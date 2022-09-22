@@ -8,8 +8,12 @@ import 'test_utils.dart';
 
 void main() {
   group('Should throw: ', () {
-    test(" 'hosts and referer cannot both be null' if wheter a host or referer list is set", () async {
-      final handler = const Pipeline().addMiddleware(validateHost()).addHandler(syncHandler);
+    test(
+        " 'hosts and referer cannot both be null' if wheter a host or referer list is set",
+        () async {
+      final handler = const Pipeline()
+          .addMiddleware(validateHost())
+          .addHandler(syncHandler);
       expectLater(
         makeRequest(handler, uri: clientUri, method: 'GET'),
         throwsA('either hosts or referers must included'),
@@ -17,7 +21,9 @@ void main() {
     });
 
     test(" 'hosts cannot be empty' if hosts is empty", () {
-      final handler = const Pipeline().addMiddleware(validateHost(hosts: [])).addHandler(syncHandler);
+      final handler = const Pipeline()
+          .addMiddleware(validateHost(hosts: []))
+          .addHandler(syncHandler);
       expectLater(
         makeRequest(handler, uri: clientUri, method: 'GET'),
         throwsA('hosts cannot be empty'),
@@ -25,7 +31,9 @@ void main() {
     });
 
     test(" 'referers cannot be empty' if referer is empty", () {
-      final handler = const Pipeline().addMiddleware(validateHost(referers: [])).addHandler(syncHandler);
+      final handler = const Pipeline()
+          .addMiddleware(validateHost(referers: []))
+          .addHandler(syncHandler);
       expectLater(
         makeRequest(handler, uri: clientUri, method: 'GET'),
         throwsA('referers cannot be empty'),
@@ -34,7 +42,8 @@ void main() {
   });
 
   group('Dev Host : ', () {
-    final handler = validateHost(hosts: ['127.0.0.1:4322', 'localhost:4322'])(syncHandler);
+    final handler =
+        validateHost(hosts: ['127.0.0.1:4322', 'localhost:4322'])(syncHandler);
 
     testHeader(
       handler: handler,
@@ -247,7 +256,8 @@ void main() {
 
   group('LAN Host Regex Test : ', () {
     // regex to match '192.168.1.1-255' (actually matches '192.168.1.001-255' too, but w/e...)
-    final lanHostRegex = RegExp(r'^192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$');
+    final lanHostRegex =
+        RegExp(r'^192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$');
     final handler = validateHost(
       hosts: [lanHostRegex],
     )(syncHandler);
@@ -299,7 +309,8 @@ void main() {
   });
 
   group('LAN Referer Regex : ', () {
-    final lanHostRegex = RegExp(r'^http:\/\/192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\/.*){0,1}$');
+    final lanHostRegex = RegExp(
+        r'^http:\/\/192\.168\.1\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])(\/.*){0,1}$');
     final handler = validateHost(
       hosts: [lanHostRegex],
     )(syncHandler);
@@ -434,7 +445,8 @@ void main() {
       },
     );
 
-    test("{'Referer': 'http://localhost'} should get a custom errorResponse", () async {
+    test("{'Referer': 'http://localhost'} should get a custom errorResponse",
+        () async {
       final response = await makeRequest(
         handler,
         uri: clientUri,
@@ -451,7 +463,8 @@ void main() {
       );
     });
 
-    test("{'Referer': 'http://google.com'} should get a custom errorResponse", () async {
+    test("{'Referer': 'http://google.com'} should get a custom errorResponse",
+        () async {
       // Need to re-create the handler because you can read a response body only once
       handler = validateHost(
         referers: [RegExp(r'^https:\/\/')],
@@ -482,7 +495,8 @@ void main() {
         .addMiddleware(
           validateHost(
             hosts: ['office-teapot'],
-            errorResponse: Response(418, body: "I'm the office teapot. Refer to me only as such."),
+            errorResponse: Response(418,
+                body: "I'm the office teapot. Refer to me only as such."),
           ),
         )
         .addHandler(syncHandler);
@@ -494,7 +508,8 @@ void main() {
       },
     );
 
-    test("{'Host': 'office-coffeepot'} should get a custom errorResponse", () async {
+    test("{'Host': 'office-coffeepot'} should get a custom errorResponse",
+        () async {
       final response = await makeRequest(
         handler,
         uri: clientUri,
