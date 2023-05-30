@@ -1,6 +1,6 @@
 name: shelf_host_validation
 description: Validates the 'Host' and 'Referer' Header so that DNS Rebinding Attacks wont work.
-version: 1.1.0
+version: 1.1.1
 homepage: https://jxstxn.de
 repository: https://github.com/jxstxn1/shelf_host_validation
 issue_tracker: https://github.com/jxstxn1/shelf_host_validation/issues
@@ -20,4 +20,4 @@ dependencies:
 
 dev_dependencies:
   lint: ^2.0.0
-  test: ^1.21.7
+  test: ^1.24.0
