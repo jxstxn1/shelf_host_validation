@@ -1,16 +1,16 @@
 name: shelf_host_validation
 description: Validates the 'Host' and 'Referer' Header so that DNS Rebinding Attacks wont work.
-version: 1.1.1
+version: 1.1.2
 homepage: https://jxstxn.de
 repository: https://github.com/jxstxn1/shelf_host_validation
 issue_tracker: https://github.com/jxstxn1/shelf_host_validation/issues
 
 topics:
  - shelf
- - dart_frog
+ - dart-frog
  - middleware
  - security
- - dns_rebinding
+ - dns-rebinding
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

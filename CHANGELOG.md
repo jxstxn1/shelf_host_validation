@@ -1,3 +1,8 @@
+
+## 1.1.2
+
+- replace `_` in topics with `-`
+
 ## 1.1.1
 
 - fix failing tests due to `test` constraints
